@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 圣诞快乐 🎄</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 雪花动画 */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            font-family: Arial;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* 主容器 */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 标题 */
+        .title {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* 祝福文字 */
+        .greeting {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+
+        .emoji {
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+            font-size: 1.2em;
+        }
+
+        .emoji:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .emoji:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .emoji:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .emoji:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.1);
+            }
+        }
+
+        /* 链接按钮 */
+        .link-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .link-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .link-button:active {
+            transform: translateY(-1px);
+        }
+
+        .link-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 圣诞树装饰 */
+        .tree {
+            font-size: 2em;
+            margin: 20px 0;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .title {
+                font-size: 2em;
+            }
+
+            .greeting {
+                font-size: 1.4em;
+            }
+
+            .link-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 雪花效果 -->
+    <div id="snowflakes"></div>
+
+    <div class="container">
+        <div class="title">
+            <span class="emoji">🎄</span>
+            <span class="emoji">🎅</span>
+            圣诞快乐！
+            <span class="emoji">🎁</span>
+            <span class="emoji">✨</span>
+        </div>
+
+        <div class="greeting">
+            <p>点击查看我的祝福：</p>
+            <div class="tree">🎄</div>
+        </div>
+
+        <a href="share.html" class="link-button">
+            <span class="link-text">查看祝福 🎁</span>
+        </a>
+    </div>
+
+    <script>
+        // 创建雪花效果
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            document.getElementById('snowflakes').appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // 每300ms创建一个雪花
+        setInterval(createSnowflake, 300);
+
+        // 获取当前域名并更新链接（如果需要）
+        const currentDomain = window.location.origin;
+        console.log('当前域名:', currentDomain);
+    </script>
+</body>
+
+</html>
+
